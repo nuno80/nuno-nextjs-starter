@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { ModeToggle } from "@/components/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -33,8 +34,8 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:gap-6">
-          <div className="flex gap-4">
+        <div className="hidden md:flex md:items-center md:gap-6" > <div className="flex items-center gap-4">
+            <ModeToggle />
             <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
               Home
             </Link>
@@ -49,18 +50,32 @@ export function Navbar() {
             </Link>
           </div>
           <div className="flex items-center gap-4">
-            <ModeToggle />
-            <Button size="sm">Sign In</Button>
+            <SignedOut>
+              <SignInButton /> <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            
           </div>
         </div>
 
-        {/* Mobile Navigation Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
-          <ModeToggle />
-          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu" >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-        </div>
+         {/* Mobile Navigation Toggle */}
+         <div className="flex items-center gap-4 md:hidden">
+            
+            <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <ModeToggle />
+            <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+            
+          </div>
       </div>
 
       {/* Mobile Menu */}
@@ -95,9 +110,7 @@ export function Navbar() {
             >
               About
             </Link>
-            <Button size="sm" className="w-full">
-              Sign In
-            </Button>
+
           </div>
         </div>
       )}
