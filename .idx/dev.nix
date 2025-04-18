@@ -22,9 +22,9 @@
     previews = {
       web = {
         command = [
-          "npm"
+          "pnpm"
           "run"
-          "start"
+          "dev"
           "--"
           "--port"
           "$PORT"

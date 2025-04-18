@@ -1,6 +1,7 @@
-import { Navbar } from "@/components/navbar"
-import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
+import { Check } from "lucide-react";
+
+import { Navbar } from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 
 export default function PricingPage() {
   return (
@@ -8,18 +9,24 @@ export default function PricingPage() {
       <Navbar />
       <main className="container py-10 text-center">
         <h1 className="text-4xl font-bold">Pricing Plans</h1>
-        <p className="mt-4 text-lg text-muted-foreground mx-auto max-w-2xl">
-          Choose the perfect plan for your needs. All plans include a 14-day free trial.
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          Choose the perfect plan for your needs. All plans include a 14-day
+          free trial.
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {/* Basic Plan */}
-          <div className="rounded-lg border p-8 flex flex-col">
+          <div className="flex flex-col rounded-lg border p-8">
             <h3 className="text-xl font-bold">Basic</h3>
             <div className="mt-4 text-4xl font-bold">
-              $9<span className="text-lg font-normal text-muted-foreground">/month</span>
+              $9
+              <span className="text-lg font-normal text-muted-foreground">
+                /month
+              </span>
             </div>
-            <p className="mt-2 text-muted-foreground">Perfect for individuals and small projects.</p>
+            <p className="mt-2 text-muted-foreground">
+              Perfect for individuals and small projects.
+            </p>
 
             <ul className="mt-6 space-y-3 text-left">
               <li className="flex items-start">
@@ -40,15 +47,20 @@ export default function PricingPage() {
           </div>
 
           {/* Pro Plan */}
-          <div className="rounded-lg border border-primary p-8 flex flex-col relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 text-xs font-medium rounded-full">
+          <div className="relative flex flex-col rounded-lg border border-primary p-8">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
               Most Popular
             </div>
             <h3 className="text-xl font-bold">Pro</h3>
             <div className="mt-4 text-4xl font-bold">
-              $19<span className="text-lg font-normal text-muted-foreground">/month</span>
+              $19
+              <span className="text-lg font-normal text-muted-foreground">
+                /month
+              </span>
             </div>
-            <p className="mt-2 text-muted-foreground">Ideal for growing businesses and teams.</p>
+            <p className="mt-2 text-muted-foreground">
+              Ideal for growing businesses and teams.
+            </p>
 
             <ul className="mt-6 space-y-3 text-left">
               <li className="flex items-start">
@@ -73,12 +85,17 @@ export default function PricingPage() {
           </div>
 
           {/* Enterprise Plan */}
-          <div className="rounded-lg border p-8 flex flex-col">
+          <div className="flex flex-col rounded-lg border p-8">
             <h3 className="text-xl font-bold">Enterprise</h3>
             <div className="mt-4 text-4xl font-bold">
-              $49<span className="text-lg font-normal text-muted-foreground">/month</span>
+              $49
+              <span className="text-lg font-normal text-muted-foreground">
+                /month
+              </span>
             </div>
-            <p className="mt-2 text-muted-foreground">For large organizations with advanced needs.</p>
+            <p className="mt-2 text-muted-foreground">
+              For large organizations with advanced needs.
+            </p>
 
             <ul className="mt-6 space-y-3 text-left">
               <li className="flex items-start">
@@ -104,6 +121,5 @@ export default function PricingPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-

@@ -1,28 +1,35 @@
-"use client"
+"use client";
 
-import { Menu, X } from "lucide-react"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { ModeToggle } from "@/components/mode-toggle"
-import { Button } from "@/components/ui/button"
-import { useMobile } from "@/hooks/use-mobile"
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs"
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { Menu, X } from "lucide-react";
+
+import { ModeToggle } from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
+import { useMobile } from "@/hooks/use-mobile";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const isMobile = useMobile()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMobile();
 
   // Close menu when switching from mobile to desktop
   useEffect(() => {
     if (!isMobile) {
-      setIsMenuOpen(false)
+      setIsMenuOpen(false);
     }
-  }, [isMobile])
+  }, [isMobile]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -34,35 +41,42 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:gap-6" > <div className="flex items-center gap-4">
+        <div className="hidden md:flex md:items-center md:gap-6">
+          <div className="flex items-center gap-4">
             <ModeToggle />
-            <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link
+              href="/"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
               Home
             </Link>
-            <Link href="/features" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link
+              href="/features"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
               Features
             </Link>
-            <Link href="/pricing" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link
+              href="/pricing"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
               Pricing
             </Link>
-            <Link href="/about" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link
+              href="/about"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
               About
             </Link>
+            <Link
+              href="/dashboard"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Dashboard
+            </Link>
           </div>
-          <div className="flex items-center gap-4">
-            <SignedOut>
-              <SignInButton /> <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-            
-          </div>
-        </div>
 
-         {/* Mobile Navigation Toggle */}
-         <div className="flex items-center gap-4 md:hidden">
-            
+          <div className="flex items-center gap-4">
             <SignedOut>
               <SignInButton />
               <SignUpButton />
@@ -70,17 +84,41 @@ export function Navbar() {
             <SignedIn>
               <UserButton />
             </SignedIn>
-            <ModeToggle />
-            <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-            
           </div>
+        </div>
+
+        {/* Mobile Navigation Toggle */}
+        <div className="flex items-center gap-4 md:hidden">
+          <SignedOut>
+            <SignInButton />
+            <SignUpButton />
+          </SignedOut>
+
+          <ModeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleMenu}
+
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </Button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+
+
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="container px-6 md:px-8 md:hidden">
+        <div className="container px-6 md:hidden md:px-8">
           <div className="flex flex-col space-y-4 pb-6">
             <Link
               href="/"
@@ -110,11 +148,9 @@ export function Navbar() {
             >
               About
             </Link>
-
           </div>
         </div>
       )}
     </nav>
-  )
+  );
 }
-

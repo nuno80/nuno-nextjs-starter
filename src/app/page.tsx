@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/navbar"
+import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   return (
@@ -6,11 +6,10 @@ export default function Home() {
       <Navbar />
       <main className="container py-10 text-center">
         <h1 className="text-4xl font-bold">Welcome to MyApp</h1>
-        <p className="mt-4 text-lg text-muted-foreground mx-auto max-w-2xl">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
           This is a responsive navigation bar with a night mode toggle.
         </p>
       </main>
     </div>
-  )
+  );
 }
-
